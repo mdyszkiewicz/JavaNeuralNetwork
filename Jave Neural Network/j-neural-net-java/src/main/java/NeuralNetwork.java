@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -13,14 +12,9 @@ public class NeuralNetwork {
     public NeuralNetwork(List<Integer> layerSizes) {
         this.layerSizes = layerSizes;
         biases = IntStream.range(1, layerSizes.size()).boxed().collect(Collectors.toMap(
-                layerNumber -> layerNumber, layerNumber -> new ArrayList<>(layerSizes.get(layerNumber))));
-        for (int layerNo = 0; layerNo < layerSizes.size(); layerNo++) {
-            if (layerNo>0){
-                for (int j = 0; j < layerSizes.get(layerNo); j++) {
-                    biases.get(layerNo).add(Math.random());
-                }
-            }
-        }
+                layerNumber -> layerNumber,
+                layerNumber -> IntStream.range(0, layerSizes.get(layerNumber))
+                        .mapToObj(i -> Math.random()).collect(Collectors.toList())));
     }
 
     public Map<Integer, List<Double>> getBiases() {

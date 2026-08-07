@@ -15,7 +15,7 @@ public class NeuralNetworkTest {
 
 
         long nonZeroBiases = 0;
-        for (List<Double> biases : neuralNetwork.getBiases()){
+        for (List<Double> biases : neuralNetwork.getBiases().values()){
             for (Double bias : biases) {
                 if (0 != Double.compare(bias, 0.0d)) {
                     nonZeroBiases++;
@@ -23,7 +23,7 @@ public class NeuralNetworkTest {
             }
         }
 
-        assertEquals(2, neuralNetwork.getBiases().size());
+        assertEquals(1, neuralNetwork.getBiases().size());
         assertNotEquals(0, nonZeroBiases);
     }
 

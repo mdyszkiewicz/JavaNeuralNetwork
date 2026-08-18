@@ -23,18 +23,18 @@ public class NeuralNetwork {
     public NeuralNetwork(List<Integer> layerSizes) {
         vetoNotEnoughLayers(layerSizes);
         layeredNeurons = new HashMap<>();
-        for (int layerNumber = 1; layerNumber <= layerSizes.size(); layerNumber++) {
-            if (layerNumber == 1) {
-                layeredNeurons.put(layerNumber, createNeurons(
-                        layerSizes.get(0), () -> Neuron.NeuronBuilder.createNeuronWithValue(Math.random())));
-            } else {
-                int prevLayer = layerNumber - 1;
-                layeredNeurons.put(layerNumber, createNeurons(
-                        layerSizes.get(layerNumber - 1), () -> Neuron.NeuronBuilder.createNeuronWithInputs(
-                                layeredNeurons.get(prevLayer).stream().map(
-                                                (Function<Neuron, Pair<Neuron, Double>>) previousLeyerNeuron -> new MutablePair<>(previousLeyerNeuron, Math.random()))
-                                        .collect(Collectors.toList()), Math.random())));
-            }
+        // initial ("input") neurons
+        layeredNeurons.put(1, createNeurons(
+                layerSizes.get(0), () -> Neuron.NeuronBuilder.createNeuronWithValue(Math.random())));
+
+        for (int layerNumber = 2; layerNumber <= layerSizes.size(); layerNumber++) {
+            int prevLayer = layerNumber - 1;
+            layeredNeurons.put(layerNumber, createNeurons(
+                    layerSizes.get(layerNumber - 1),
+                    () -> Neuron.NeuronBuilder.createNeuronWithInputs(layeredNeurons.get(prevLayer).stream().map(
+                                    (Function<Neuron, Pair<Neuron, Double>>)
+                                            previousLeyerNeuron -> new MutablePair<>(previousLeyerNeuron, Math.random()))
+                            .collect(Collectors.toList()), Math.random())));
         }
 
     }

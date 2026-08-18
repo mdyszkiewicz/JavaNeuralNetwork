@@ -1,11 +1,10 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class NeuralNetworkTest {
 
@@ -35,14 +34,10 @@ public class NeuralNetworkTest {
         });
     }
 
-    @Test(expected = RuntimeException.class)
-    public void getNullNetworkSize() {
-        new NeuralNetwork(null);
-    }
-
-    @Test(expected = RuntimeException.class)
+    @Test
     public void getInvalidNetworkSize() {
-        new NeuralNetwork(Collections.singletonList(16));
+        assertThrows(RuntimeException.class, () -> new NeuralNetwork(null));
+        assertThrows(RuntimeException.class, () -> new NeuralNetwork(Collections.singletonList(16)));
     }
 
 }

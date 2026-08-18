@@ -2,6 +2,9 @@ package mattd;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Maps;
+import org.apache.commons.lang3.tuple.MutablePair;
+import org.apache.commons.lang3.tuple.Pair;
+import org.jspecify.annotations.NonNull;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,26 +16,23 @@ import java.util.stream.IntStream;
 
 public class NeuralNetwork {
 
-    private final Map<Integer, List<List<Double>>> weights;
     private final Map<Integer, List<Neuron>> layeredNeurons;
 
 
     public NeuralNetwork(List<Integer> layerSizes) {
         vetoNotEnoughLayers(layerSizes);
-        weights = new HashMap<>();
         layeredNeurons = new HashMap<>();
-        for (int layerNumber = 1; layerNumber < layerSizes.size(); layerNumber++) {
-            int previousLayerNumber = layerNumber - 1;
-            weights.put(layerNumber, IntStream.range(0, layerSizes.get(layerNumber))
-                    .mapToObj(nodeNumber -> IntStream.range(0, layerSizes.get(previousLayerNumber))
-                            .mapToObj(prevLayerConnection -> Math.random()).collect(Collectors.toList()))
-                    .collect(Collectors.toList()));
+        for (int layerNumber = 1; layerNumber <= layerSizes.size(); layerNumber++) {
             if (layerNumber == 1) {
                 layeredNeurons.put(layerNumber, createNeurons(
-                        layerSizes.get(layerNumber), () -> Neuron.NeuronBuilder.createNeuronWithValue(Math.random())));
+                        layerSizes.get(0), () -> Neuron.NeuronBuilder.createNeuronWithValue(Math.random())));
             } else {
+                int prevLayer = layerNumber - 1;
                 layeredNeurons.put(layerNumber, createNeurons(
-                        layerSizes.get(layerNumber), () -> Neuron.NeuronBuilder.createNeuronWithValue(Math.random())));
+                        layerSizes.get(layerNumber - 1), () -> Neuron.NeuronBuilder.createNeuronWithInputs(
+                                layeredNeurons.get(prevLayer).stream().map(
+                                                (Function<Neuron, Pair<Neuron, Double>>) previousLeyerNeuron -> new MutablePair<>(previousLeyerNeuron, Math.random()))
+                                        .collect(Collectors.toList()), Math.random())));
             }
         }
 
@@ -40,14 +40,13 @@ public class NeuralNetwork {
 
     private static List<Neuron> createNeurons(Integer neuronCount, Supplier<Neuron> neuronCreator) {
         return IntStream.range(0, neuronCount)
-                .mapToObj(nodeNUmber -> {
-                    return neuronCreator.get();
-                })
+                .mapToObj(nodeNUmber -> neuronCreator.get())
                 .collect(Collectors.toList());
     }
 
     public Map<Integer, List<List<Double>>> getWeights() {
-        return weights;
+        return Maps.transformValues(allButTheFirstLayer(), neurons -> neurons.stream()
+                .map((Function<Neuron, List<Double>>) Neuron::getWeights).collect(Collectors.toList()));
     }
 
     private void vetoNotEnoughLayers(List<Integer> layerSizes) {
@@ -57,7 +56,12 @@ public class NeuralNetwork {
     }
 
     public Map<Integer, List<Double>> getBiases() {
-        return Maps.transformValues(layeredNeurons, neurons -> neurons.stream()
-                .map((Function<Neuron, Double>) Neuron::getBias).collect(Collectors.toList()));
+        return Maps.transformValues(allButTheFirstLayer(),
+                neurons -> neurons.stream().map(
+                        (Function<Neuron, Double>) Neuron::getBias).collect(Collectors.toList()));
+    }
+
+    private @NonNull Map<Integer, List<Neuron>> allButTheFirstLayer() {
+        return Maps.filterKeys(layeredNeurons, layerNumber -> layerNumber != 1);
     }
 }

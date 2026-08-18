@@ -27,12 +27,12 @@ public class NeuralNetworkTest {
     public void getBiases() {
         NeuralNetwork neuralNetwork = new NeuralNetwork(Arrays.asList(16, 4));
 
-        assertEquals(4, neuralNetwork.getBiases().get(1).size());
+        assertEquals(4, neuralNetwork.getBiases().get(2).size());
         assertBiasesAreMostlyNonZero(neuralNetwork);
         assertEquals(1, neuralNetwork.getWeights().size());
 
-        neuralNetwork.getWeights().get(1).forEach(doubles -> {
-            assertEquals(16, doubles.size());
+        neuralNetwork.getWeights().get(2).forEach(weights -> {
+            assertEquals(16, weights.size());
         });
     }
 

@@ -31,9 +31,7 @@ public class NeuralNetworkTest {
         assertBiasesAreMostlyNonZero(neuralNetwork);
         assertEquals(1, neuralNetwork.getWeights().size());
 
-        neuralNetwork.getWeights().get(2).forEach(weights -> {
-            assertEquals(16, weights.size());
-        });
+        neuralNetwork.getWeights().get(2).forEach(weights -> assertEquals(16, weights.size()));
     }
 
     @Test

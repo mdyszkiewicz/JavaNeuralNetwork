@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Neuron {
-    private List<Pair<Neuron, Double>> weightedInputs;
+    private final List<Pair<Neuron, Double>> weightedInputs;
     private Double bias;
 
     Neuron(List<Pair<Neuron, Double>> weightedInputs, Double bias) {

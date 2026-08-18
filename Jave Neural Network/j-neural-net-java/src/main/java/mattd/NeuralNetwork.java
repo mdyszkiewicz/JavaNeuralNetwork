@@ -9,6 +9,7 @@ import org.jspecify.annotations.NonNull;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -45,7 +46,7 @@ public class NeuralNetwork {
     }
 
     public Map<Integer, List<List<Double>>> getWeights() {
-        return Maps.transformValues(allButTheFirstLayer(), neurons -> neurons.stream()
+        return Maps.transformValues(allButTheFirstLayer(), neurons -> Objects.requireNonNull(neurons).stream()
                 .map((Function<Neuron, List<Double>>) Neuron::getWeights).collect(Collectors.toList()));
     }
 
@@ -56,12 +57,13 @@ public class NeuralNetwork {
     }
 
     public Map<Integer, List<Double>> getBiases() {
+
         return Maps.transformValues(allButTheFirstLayer(),
-                neurons -> neurons.stream().map(
+                neurons -> Objects.requireNonNull(neurons).stream().map(
                         (Function<Neuron, Double>) Neuron::getBias).collect(Collectors.toList()));
     }
 
     private @NonNull Map<Integer, List<Neuron>> allButTheFirstLayer() {
-        return Maps.filterKeys(layeredNeurons, layerNumber -> layerNumber != 1);
+        return Maps.filterKeys(layeredNeurons, layerNumber -> layerNumber != null && layerNumber != 1);
     }
 }

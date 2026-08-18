@@ -25,18 +25,22 @@ public class NeuralNetwork {
         layeredNeurons = new HashMap<>();
         // initial ("input") neurons
         layeredNeurons.put(1, createNeurons(
-                layerSizes.get(0), () -> Neuron.NeuronBuilder.createNeuronWithValue(Math.random())));
+                getDesiredSizeOfLayer(1, layerSizes), () -> Neuron.NeuronBuilder.createNeuronWithValue(Math.random())));
 
         for (int layerNumber = 2; layerNumber <= layerSizes.size(); layerNumber++) {
             int prevLayer = layerNumber - 1;
             layeredNeurons.put(layerNumber, createNeurons(
-                    layerSizes.get(layerNumber - 1),
+                    getDesiredSizeOfLayer(layerNumber, layerSizes),
                     () -> Neuron.NeuronBuilder.createNeuronWithInputs(layeredNeurons.get(prevLayer).stream().map(
                                     (Function<Neuron, Pair<Neuron, Double>>)
                                             previousLeyerNeuron -> new MutablePair<>(previousLeyerNeuron, Math.random()))
                             .collect(Collectors.toList()), Math.random())));
         }
 
+    }
+
+    private static Integer getDesiredSizeOfLayer(int layerNo, List<Integer> layerSizes) {
+        return layerSizes.get(layerNo - 1); // size of layer is a list - it's index is @-1
     }
 
     private static List<Neuron> createNeurons(Integer neuronCount, Supplier<Neuron> neuronCreator) {

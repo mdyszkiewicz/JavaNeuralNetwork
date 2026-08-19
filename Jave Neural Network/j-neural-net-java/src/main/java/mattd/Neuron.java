@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class Neuron {
     private final List<Pair<Neuron, Double>> weightedInputs;
-    private final Double bias;
+    private Double bias;
     private final TransformationFunction transformationFunction;
 
     Neuron(List<Pair<Neuron, Double>> weightedInputs, Double bias, TransformationFunction transformationFunction) {
@@ -34,9 +34,14 @@ public class Neuron {
         return weightedInputs.stream().map(Pair::getValue).collect(Collectors.toList());
     }
 
+    public void setBias(Double bias) {
+        this.bias = bias;
+    }
+
     public static class NeuronBuilder {
 
         public static final SigmoidFunction DEFAULT_TRANSFORMATION_FUNCTION = new SigmoidFunction();
+        public static final TransparentValue TRANSPARENT_TRANSFORMATION_FUNCTION1 = new TransparentValue();
 
         public static Neuron createNeuronWithInputs(List<Pair<Neuron, Double>> weightedInputs, Double bias) {
             return createNeuronWithInputsUsingOutputTransformingFunction(weightedInputs, bias, DEFAULT_TRANSFORMATION_FUNCTION);
@@ -47,7 +52,7 @@ public class Neuron {
         }
 
         public static Neuron createNeuronWithValue(Double value) {
-            return createNeuronWithValueUsingOutputTransformingFunction(value, DEFAULT_TRANSFORMATION_FUNCTION);
+            return createNeuronWithValueUsingOutputTransformingFunction(value, TRANSPARENT_TRANSFORMATION_FUNCTION1);
         }
 
         public static Neuron createNeuronWithValueUsingOutputTransformingFunction(Double value, TransformationFunction defaultTransformationFunction) {

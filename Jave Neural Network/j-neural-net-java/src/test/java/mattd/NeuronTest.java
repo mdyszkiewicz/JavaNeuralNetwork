@@ -15,7 +15,9 @@ class NeuronTest {
     @Test
     void testWeights() {
         // given
-        List<Pair<Neuron, Double>> inputs = Arrays.asList(createInputNeuron(0.0, 0.4), createInputNeuron(1.0, 0.2));
+        List<Pair<Neuron, Double>> inputs = Arrays.asList(
+                createInputNeuron(0.0, 0.4),
+                createInputNeuron(1.0, 0.2));
         Neuron neuron = Neuron.NeuronBuilder.createNeuronWithInputs(inputs, 0.5);
 
         // when
@@ -29,7 +31,9 @@ class NeuronTest {
     @Test
     void testValue() {
         // given
-        List<Pair<Neuron, Double>> inputs = Arrays.asList(createInputNeuron(0.0, 0.4), createInputNeuron(1.0, 0.2));
+        List<Pair<Neuron, Double>> inputs = Arrays.asList(
+                createInputNeuron(0.0, 0.4),
+                createInputNeuron(1.0, 0.2));
         Neuron neuron = Neuron.NeuronBuilder.createNeuronWithInputsUsingOutputTransformingFunction(inputs, 0.5, new Neuron.TransparentValue());
 
         // when

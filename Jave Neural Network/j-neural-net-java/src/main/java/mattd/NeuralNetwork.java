@@ -39,11 +39,11 @@ public class NeuralNetwork {
 
     }
 
-    private static Integer getDesiredSizeOfLayer(int layerNo, List<Integer> layerSizes) {
+    private Integer getDesiredSizeOfLayer(int layerNo, List<Integer> layerSizes) {
         return layerSizes.get(layerNo - 1); // size of layer is a list - it's index is @-1
     }
 
-    private static List<Neuron> createNeurons(Integer neuronCount, Supplier<Neuron> neuronCreator) {
+    private List<Neuron> createNeurons(Integer neuronCount, Supplier<Neuron> neuronCreator) {
         return IntStream.range(0, neuronCount)
                 .mapToObj(nodeNUmber -> neuronCreator.get())
                 .collect(Collectors.toList());
@@ -60,6 +60,17 @@ public class NeuralNetwork {
         }
     }
 
+    public void setInput(List<Double> list) {
+        List<Neuron> neuronsLayer1 = layeredNeurons.get(1);
+        if (list.size() != neuronsLayer1.size()) {
+            throw new RuntimeException(
+                    String.format("Input size different than neurons in the 1st layer count%d / %d", list.size(), neuronsLayer1.size()));
+        }
+        for (int i = 0; i < list.size(); i++) {
+            neuronsLayer1.get(i).setBias(list.get(i));
+        }
+    }
+
     public Map<Integer, List<Double>> getBiases() {
 
         return Maps.transformValues(allButTheFirstLayer(),
@@ -69,5 +80,9 @@ public class NeuralNetwork {
 
     private @NonNull Map<Integer, List<Neuron>> allButTheFirstLayer() {
         return Maps.filterKeys(layeredNeurons, layerNumber -> layerNumber != null && layerNumber != 1);
+    }
+
+    public List<Double> forwardPropagation() {
+        return layeredNeurons.get(layeredNeurons.size()).stream().map(Neuron::getValue).collect(Collectors.toList());
     }
 }

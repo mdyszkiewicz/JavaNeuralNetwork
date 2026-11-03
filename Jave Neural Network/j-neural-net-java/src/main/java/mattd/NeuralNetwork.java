@@ -6,10 +6,7 @@ import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jspecify.annotations.NonNull;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -18,7 +15,6 @@ import java.util.stream.IntStream;
 public class NeuralNetwork {
 
     private final Map<Integer, List<Neuron>> layeredNeurons;
-
 
     public NeuralNetwork(List<Integer> layerSizes) {
         vetoNotEnoughLayers(layerSizes);
@@ -49,6 +45,9 @@ public class NeuralNetwork {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @return Returns weights of layers. Layers are numbered from 1.
+     */
     public Map<Integer, List<List<Double>>> getWeights() {
         return Maps.transformValues(allButTheFirstLayer(), neurons -> Objects.requireNonNull(neurons).stream()
                 .map((Function<Neuron, List<Double>>) Neuron::getWeights).collect(Collectors.toList()));
@@ -84,5 +83,52 @@ public class NeuralNetwork {
 
     public List<Double> forwardPropagation() {
         return layeredNeurons.get(layeredNeurons.size()).stream().map(Neuron::getValue).collect(Collectors.toList());
+    }
+
+    public void train(Double[][] inputs, Double[][] expectedOutputs, int iterations, Double learningRate) {
+        for (int iter = 1; iter <= iterations; iter++) {
+            logDebug("Iteration: ", String.valueOf(iter));
+            // 1. choose input and expected output
+            Double[] input = inputs[iter % inputs.length];
+            Double[] expectedOutput = expectedOutputs[iter % expectedOutputs.length];
+            // 2. Calculate network output and error
+            setInput(Arrays.asList(input));
+
+            List<Double> results = new ArrayList<>();
+            List<Neuron> lastLayer = layeredNeurons.get(layeredNeurons.size());
+            double error = 0.0;
+            for (int neuronNumber = 0; neuronNumber < lastLayer.size(); neuronNumber++) {
+                Double difference = expectedOutput[neuronNumber] - lastLayer.get(neuronNumber).getValue();
+                error = error + (difference * difference);
+                results.add(lastLayer.get(neuronNumber).getValue());
+            }
+            logDebug("Calculated output: ", results.stream().map(Object::toString).collect(Collectors.joining(", ")));
+            logDebug("Sum of squared errors: ", Double.toString(error));
+            // 3. calculate gradient
+            List<Double> gradient;
+            for (int neuronNumber = 0; neuronNumber < lastLayer.size(); neuronNumber++) {
+                Neuron outputNeuron = lastLayer.get(neuronNumber);
+                // calculate dc/do = 2(o - expectedOutput)
+                Double gradientOfCostFunctionVsOutput = 2 * (outputNeuron.getValue() - expectedOutput[neuronNumber]);
+                // TODO: - here we need to add the derivative with respect to the transformation function!
+
+                // calculate do/dw for each weight (it's simply input form previous layer) (o = i*w + b) so do/dw = i
+                List<Double> valuesFromPreviousLayer = layeredNeurons.get(layeredNeurons.size() - 1).stream().map(Neuron::getValue).collect(Collectors.toList());
+                // do/db (bias is a constant so it's derivative is always 1)
+                Double biasDerivative = 1.0;
+                gradient = valuesFromPreviousLayer.stream().map(value -> value * gradientOfCostFunctionVsOutput).collect(Collectors.toList());
+                gradient.add(biasDerivative * gradientOfCostFunctionVsOutput);
+                logDebug("Calculated gradient: ", gradient.stream().map(Object::toString).collect(Collectors.joining(", ")));
+
+                outputNeuron.applyGradient(gradient, learningRate);
+            }
+
+
+        }
+    }
+
+
+    private void logDebug(String prefix, String variable) {
+        System.out.println(prefix + variable);
     }
 }

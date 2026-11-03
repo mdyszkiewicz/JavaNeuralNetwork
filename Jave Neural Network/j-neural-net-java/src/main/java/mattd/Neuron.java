@@ -38,6 +38,14 @@ public class Neuron {
         this.bias = bias;
     }
 
+    public void applyGradient(List<Double> gradient, Double learningRate) {
+        for (int i = 0; i < gradient.size() - 1; i++) {
+            Pair<Neuron, Double> ithConnection = weightedInputs.get(i);
+            ithConnection.setValue(ithConnection.getValue() - gradient.get(i) * learningRate);
+        }
+        bias = bias - gradient.get(gradient.size() - 1) * learningRate;
+    }
+
     public static class NeuronBuilder {
 
         public static final SigmoidFunction DEFAULT_TRANSFORMATION_FUNCTION = new SigmoidFunction();
@@ -72,7 +80,7 @@ public class Neuron {
             return 1 / (1 + Math.exp(-value));
         }
     }
-
+    
 
     public static class TransparentValue implements TransformationFunction {
         @Override

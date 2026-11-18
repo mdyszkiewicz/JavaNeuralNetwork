@@ -1,0 +1,6 @@
+mattd/Neuron$NeuronBuilder.class
+mattd/Neuron$SigmoidFunction.class
+mattd/Neuron$TransformationFunction.class
+mattd/Neuron.class
+mattd/Neuron$TransparentValue.class
+mattd/NeuralNetwork.class

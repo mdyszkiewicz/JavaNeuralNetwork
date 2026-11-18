@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="mattd.NeuralNetworkBackPropagationTest(1794951610599)" time="0.544" tests="4" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="27"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/mateusz/IdeaProjects/JavaNeuralNetwork/Jave Neural Network/j-neural-net-java/target/test-classes:/home/mateusz/IdeaProjects/JavaNeuralNetwork/Jave Neural Network/j-neural-net-java/target/classes:/home/mateusz/.m2/repository/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18.jar:/home/mateusz/.m2/repository/org/junit/jupiter/junit-jupiter/6.0.0/junit-jupiter-6.0.0.jar:/home/mateusz/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.0/junit-jupiter-api-6.0.0.jar:/home/mateusz/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/mateusz/.m2/repository/org/junit/platform/junit-platform-commons/6.0.0/junit-platform-commons-6.0.0.jar:/home/mateusz/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/mateusz/.m2/repository/org/junit/jupiter/junit-jupiter-params/6.0.0/junit-jupiter-params-6.0.0.jar:/home/mateusz/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.0/junit-jupiter-engine-6.0.0.jar:/home/mateusz/.m2/repository/org/junit/platform/junit-platform-engine/6.0.0/junit-platform-engine-6.0.0.jar:/home/mateusz/.m2/repository/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/home/mateusz/.m2/repository/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/home/mateusz/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/mateusz/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/mateusz/.m2/repository/com/google/errorprone/error_prone_annotations/2.47.0/error_prone_annotations-2.47.0.jar:/home/mateusz/.m2/repository/com/google/j2objc/j2objc-annotations/3.1/j2objc-annotations-3.1.jar:/home/mateusz/.m2/repository/org/apache/commons/commons-lang3/3.19.0/commons-lang3-3.19.0.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="27"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/home/mateusz/.jdks/openjdk-27.0.1.0.3/lib"/>
+    <property name="sun.java.command" value="/home/mateusz/IdeaProjects/JavaNeuralNetwork/Jave Neural Network/j-neural-net-java/target/surefire/surefirebooter-20261117224021185_3.jar /home/mateusz/IdeaProjects/JavaNeuralNetwork/Jave Neural Network/j-neural-net-java/target/surefire 2026-11-17T22-40-20_850-jvmRun1 surefire-20261117224021185_1tmp surefire_0-20261117224021185_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/home/mateusz/IdeaProjects/JavaNeuralNetwork/Jave Neural Network/j-neural-net-java/target/test-classes:/home/mateusz/IdeaProjects/JavaNeuralNetwork/Jave Neural Network/j-neural-net-java/target/classes:/home/mateusz/.m2/repository/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18.jar:/home/mateusz/.m2/repository/org/junit/jupiter/junit-jupiter/6.0.0/junit-jupiter-6.0.0.jar:/home/mateusz/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.0/junit-jupiter-api-6.0.0.jar:/home/mateusz/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/mateusz/.m2/repository/org/junit/platform/junit-platform-commons/6.0.0/junit-platform-commons-6.0.0.jar:/home/mateusz/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/mateusz/.m2/repository/org/junit/jupiter/junit-jupiter-params/6.0.0/junit-jupiter-params-6.0.0.jar:/home/mateusz/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.0/junit-jupiter-engine-6.0.0.jar:/home/mateusz/.m2/repository/org/junit/platform/junit-platform-engine/6.0.0/junit-platform-engine-6.0.0.jar:/home/mateusz/.m2/repository/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/home/mateusz/.m2/repository/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/home/mateusz/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/mateusz/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/mateusz/.m2/repository/com/google/errorprone/error_prone_annotations/2.47.0/error_prone_annotations-2.47.0.jar:/home/mateusz/.m2/repository/com/google/j2objc/j2objc-annotations/3.1/j2objc-annotations-3.1.jar:/home/mateusz/.m2/repository/org/apache/commons/commons-lang3/3.19.0/commons-lang3-3.19.0.jar:"/>
+    <property name="test" value="mattd.NeuralNetworkBackPropagationTest"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/mateusz"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-10-25"/>
+    <property name="java.home" value="/home/mateusz/.jdks/openjdk-27.0.1.0.3"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/mateusz/IdeaProjects/JavaNeuralNetwork/Jave Neural Network/j-neural-net-java"/>
+    <property name="style.color" value="always"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.reportNameSuffix" value="1794951610599"/>
+    <property name="surefire.real.class.path" value="/home/mateusz/IdeaProjects/JavaNeuralNetwork/Jave Neural Network/j-neural-net-java/target/surefire/surefirebooter-20261117224021185_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="27.0.1.0.3+1-2"/>
+    <property name="user.name" value="mateusz"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="7.0.0-43-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="surefire.failIfNoSpecifiedTests" value="false"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="maven.ext.class.path" value="/snap/intellij-idea/154/plugins/maven-plugin/lib/intellij.maven.rt/maven-event-listener.jar"/>
+    <property name="localRepository" value="/home/mateusz/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="idea.version" value="2026.3"/>
+    <property name="java.version" value="27.0.1.0.3"/>
+    <property name="user.dir" value="/home/mateusz/IdeaProjects/JavaNeuralNetwork/Jave Neural Network/j-neural-net-java"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="jansi.passthrough" value="true"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="failIfNoTests" value="false"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="27.0.1.0.3+1-2"/>
+    <property name="stdin.encoding" value="UTF-8"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="maven.repo.local" value="/home/mateusz/.m2/repository"/>
+    <property name="java.class.version" value="71.0"/>
+  </properties>
+  <testcase name="simplestRepeaterGateLearning" classname="mattd.NeuralNetworkBackPropagationTest" time="0.168">
+    <system-out><![CDATA[Iteration: 1
+Calculated output: 0.7041446458278126
+Sum of squared errors: 0.08753039059235047
+Calculated gradient: -0.5917107083443749, -0.5917107083443749
+Iteration: 2
+Calculated output: 0.5886193915852119
+Sum of squared errors: 0.34647278815014504
+Calculated gradient: 0.0, 1.1772387831704239
+Iteration: 3
+Calculated output: 0.7042734292595431
+Sum of squared errors: 0.08745420464191048
+Calculated gradient: -0.5914531414809139, -0.5914531414809139
+Iteration: 4
+Calculated output: 0.5743648691121734
+Sum of squared errors: 0.32989500287024415
+Calculated gradient: 0.0, 1.1487297382243469
+Iteration: 5
+Calculated output: 0.704984734962821
+Sum of squared errors: 0.08703400660495697
+Calculated gradient: -0.590030530074358, -0.590030530074358
+Iteration: 6
+Calculated output: 0.5606529539027196
+Sum of squared errors: 0.31433173471984505
+Calculated gradient: 0.0, 1.1213059078054393
+Iteration: 7
+Calculated output: 0.7062052585164843
+Sum of squared errors: 0.08631535012336582
+Calculated gradient: -0.5875894829670314, -0.5875894829670314
+Iteration: 8
+Calculated output: 0.5474668303687852
+Sum of squared errors: 0.2997199303540442
+Calculated gradient: 0.0, 1.0949336607375704
+Iteration: 9
+Calculated output: 0.7078674239195899
+Sum of squared errors: 0.08534144200737659
+Calculated gradient: -0.5842651521608202, -0.5842651521608202
+Iteration: 10
+Calculated output: 0.5347871965775127
+Sum of squared errors: 0.28599734562323526
+Calculated gradient: 0.0, 1.0695743931550254
+Iteration: 11
+Calculated output: 0.7099095272175966
+Sum of squared errors: 0.08415248239911834
+Calculated gradient: -0.5801809455648068, -0.5801809455648068
+Iteration: 12
+Calculated output: 0.5225932582352044
+Sum of squared errors: 0.27310371355288704
+Calculated gradient: 0.0, 1.0451865164704088
+Iteration: 13
+Calculated output: 0.7122756790756143
+Sum of squared errors: 0.0827852848513989
+Calculated gradient: -0.5754486418487714, -0.5754486418487714
+Iteration: 14
+Calculated output: 0.5108634974671086
+Sum of squared errors: 0.26098151304432643
+Calculated gradient: 0.0, 1.0217269949342171
+Iteration: 15
+Calculated output: 0.7149156072100501
+Sum of squared errors: 0.08127311101241444
+Calculated gradient: -0.5701687855798998, -0.5701687855798998
+Iteration: 16
+Calculated output: 0.49957625223493557
+Sum of squared errors: 0.24957643179710395
+Calculated gradient: 0.0, 0.9991525044698711
+Iteration: 17
+Calculated output: 0.7177843658598742
+Sum of squared errors: 0.07964566415311336
+Calculated gradient: -0.5644312682802517, -0.5644312682802517
+Iteration: 18
+Calculated output: 0.48871014050384476
+Sum of squared errors: 0.23883760143128768
+Calculated gradient: 0.0, 0.9774202810076895
+Iteration: 19
+Calculated output: 0.7208419881629721
+Sum of squared errors: 0.07792919557280223
+Calculated gradient: -0.5583160236740559, -0.5583160236740559
+Iteration: 20
+Calculated output: 0.47824435990012965
+Sum of squared errors: 0.22871766777628474
+Calculated gradient: 0.0, 0.9564887198002593
+Iteration: 21
+Calculated output: 0.7240531081939074
+Sum of squared errors: 0.07614668709744335
+Calculated gradient: -0.5518937836121851, -0.5518937836121851
+Iteration: 22
+Calculated output: 0.4681588895112015
+Sum of squared errors: 0.21917274582836135
+Calculated gradient: 0.0, 0.936317779022403
+Iteration: 23
+Calculated output: 0.7273865722159306
+Sum of squared errors: 0.07431808100818
+Calculated gradient: -0.5452268555681388, -0.5452268555681388
+Iteration: 24
+Calculated output: 0.4584346162634866
+Sum of squared errors: 0.2101622973886502
+Calculated gradient: 0.0, 0.9168692325269732
+Iteration: 25
+Calculated output: 0.7308150530852388
+Sum of squared errors: 0.07246053564550282
+Calculated gradient: -0.5383698938295225, -0.5383698938295225
+Iteration: 26
+Calculated output: 0.44905340432345553
+Sum of squared errors: 0.20164895993448484
+Calculated gradient: 0.0, 0.8981068086469111
+Iteration: 27
+Calculated output: 0.7343146774242958
+Sum of squared errors: 0.070588690632156
+Calculated gradient: -0.5313706451514084, -0.5313706451514084
+Iteration: 28
+Calculated output: 0.4399981223872664
+Sum of squared errors: 0.19359834770431983
+Calculated gradient: 0.0, 0.8799962447745328
+Iteration: 29
+Calculated output: 0.7378646718961298
+Sum of squared errors: 0.06871493024012368
+Calculated gradient: -0.5242706562077404, -0.5242706562077404
+Iteration: 30
+Calculated output: 0.4312526406307419
+Sum of squared errors: 0.18597884005098783
+Calculated gradient: 0.0, 0.8625052812614838
+Iteration: 31
+Calculated output: 0.7414470324467414
+Sum of squared errors: 0.0668496370305964
+Calculated gradient: -0.5171059351065173, -0.5171059351065173
+Iteration: 32
+Calculated output: 0.4228018064911208
+Sum of squared errors: 0.17876136757215516
+Calculated gradient: 0.0, 0.8456036129822416
+Iteration: 33
+Calculated output: 0.7450462185607053
+Sum of squared errors: 0.06500143067019565
+Calculated gradient: -0.5099075628785894, -0.5099075628785894
+Iteration: 34
+Calculated output: 0.4146314063139821
+Sum of squared errors: 0.1719192031019105
+Calculated gradient: 0.0, 0.8292628126279642
+Iteration: 35
+Calculated output: 0.7486488732524167
+Sum of squared errors: 0.06317738891727968
+Calculated gradient: -0.5027022534951666, -0.5027022534951666
+Iteration: 36
+Calculated output: 0.40672811817236887
+Sum of squared errors: 0.16542776211203644
+Calculated gradient: 0.0, 0.8134562363447377
+Iteration: 37
+Calculated output: 0.7522435685776598
+Sum of squared errors: 0.061383249311132745
+Calculated gradient: -0.4955128628446803, -0.4955128628446803
+Iteration: 38
+Calculated output: 0.39907945979278814
+Sum of squared errors: 0.1592644152285036
+Calculated gradient: 0.0, 0.7981589195855763
+Iteration: 39
+Calculated output: 0.755820575806345
+Sum of squared errors: 0.05962359119954492
+Calculated gradient: -0.48835884838731003, -0.48835884838731003
+Iteration: 40
+Calculated output: 0.391673734447106
+Sum of squared errors: 0.1534083142557421
+Calculated gradient: 0.0, 0.783347468894212
+Iteration: 41
+Calculated output: 0.7593716589757122
+Sum of squared errors: 0.05790199850410093
+Calculated gradient: -0.4812566820485755, -0.4812566820485755
+Iteration: 42
+Calculated output: 0.3844999768373228
+Sum of squared errors: 0.14784023218790177
+Calculated gradient: 0.0, 0.7689999536746456
+Iteration: 43
+Calculated output: 0.7628898902878661
+Sum of squared errors: 0.05622120412770016
+Calculated gradient: -0.47422021942426773, -0.47422021942426773
+Iteration: 44
+Calculated output: 0.3775479003649914
+Sum of squared errors: 0.1425424170700135
+Calculated gradient: 0.0, 0.7550958007299828
+Iteration: 45
+Calculated output: 0.7663694856823999
+Sum of squared errors: 0.05458321722030633
+Calculated gradient: -0.46726102863520014, -0.46726102863520014
+Iteration: 46
+Calculated output: 0.37080784669856504
+Sum of squared errors: 0.1374984591732265
+Calculated gradient: 0.0, 0.7416156933971301
+Iteration: 47
+Calculated output: 0.7698056588702115
+Sum of squared errors: 0.052989434688177454
+Calculated gradient: -0.4603886822595771, -0.4603886822595771
+Iteration: 48
+Calculated output: 0.3642707381967962
+Sum of squared errors: 0.13269317070643882
+Calculated gradient: 0.0, 0.7285414763935923
+Iteration: 49
+Calculated output: 0.773194492132354
+Sum of squared errors: 0.05144073839910082
+Calculated gradient: -0.45361101573529194, -0.45361101573529194
+Iteration: 50
+Calculated output: 0.35792803348703967
+Sum of squared errors: 0.12811247715589938
+Calculated gradient: 0.0, 0.7158560669740793
+]]></system-out>
+  </testcase>
+  <testcase name="simplestAlways1GateLearning" classname="mattd.NeuralNetworkBackPropagationTest" time="0.132">
+    <system-out><![CDATA[Iteration: 1
+Calculated output: 0.6433399178252869
+Sum of squared errors: 0.12720641421687312
+Calculated gradient: -0.7133201643494262, -0.7133201643494262
+Iteration: 2
+Calculated output: 0.6031316566554322
+Sum of squared errors: 0.15750448194906172
+Calculated gradient: -0.0, -0.7937366866891356
+Iteration: 3
+Calculated output: 0.6925201444182877
+Sum of squared errors: 0.09454386158855066
+Calculated gradient: -0.6149597111634246, -0.6149597111634246
+Iteration: 4
+Calculated output: 0.6363138282225519
+Sum of squared errors: 0.1322676315421355
+Calculated gradient: -0.0, -0.7273723435548962
+Iteration: 5
+Calculated output: 0.7325613561575415
+Sum of squared errors: 0.07152342822029338
+Calculated gradient: -0.534877287684917, -0.534877287684917
+Iteration: 6
+Calculated output: 0.66499309532563
+Sum of squared errors: 0.11222962617950243
+Calculated gradient: -0.0, -0.67001380934874
+Iteration: 7
+Calculated output: 0.7652414323084399
+Sum of squared errors: 0.05511158510459281
+Calculated gradient: -0.46951713538312023, -0.46951713538312023
+Iteration: 8
+Calculated output: 0.6898843344038162
+Sum of squared errors: 0.09617172604816407
+Calculated gradient: -0.0, -0.6202313311923675
+Iteration: 9
+Calculated output: 0.7920884518962357
+Sum of squared errors: 0.04322721183490391
+Calculated gradient: -0.41582309620752866, -0.41582309620752866
+Iteration: 10
+Calculated output: 0.7116033865946473
+Sum of squared errors: 0.08317260662367647
+Calculated gradient: -0.0, -0.5767932268107054
+Iteration: 11
+Calculated output: 0.8143314340352189
+Sum of squared errors: 0.03447281638741827
+Calculated gradient: -0.3713371319295622, -0.3713371319295622
+Iteration: 12
+Calculated output: 0.7306646000593283
+Sum of squared errors: 0.07254155766120157
+Calculated gradient: -0.0, -0.5386707998813434
+Iteration: 13
+Calculated output: 0.8329302862544795
+Sum of squared errors: 0.027912289251010157
+Calculated gradient: -0.334139427491041, -0.334139427491041
+Iteration: 14
+Calculated output: 0.7474915166907748
+Sum of squared errors: 0.06376053414312524
+Calculated gradient: -0.0, -0.5050169666184503
+Iteration: 15
+Calculated output: 0.8486264345420192
+Sum of squared errors: 0.022913956319461585
+Calculated gradient: -0.3027471309159615, -0.3027471309159615
+Iteration: 16
+Calculated output: 0.7624311115112269
+Sum of squared errors: 0.05643897677779111
+Calculated gradient: -0.0, -0.4751377769775462
+Iteration: 17
+Calculated output: 0.8619916700544495
+Sum of squared errors: 0.019046299134359918
+Calculated gradient: -0.2760166598911009, -0.2760166598911009
+Iteration: 18
+Calculated output: 0.7757675978339441
+Sum of squared errors: 0.05028017018115982
+Calculated gradient: -0.0, -0.4484648043321118
+Iteration: 19
+Calculated output: 0.8734685658907948
+Sum of squared errors: 0.016010203817732136
+Calculated gradient: -0.2530628682184104, -0.2530628682184104
+Iteration: 20
+Calculated output: 0.7877344125559546
+Sum of squared errors: 0.0450566796129657
+Calculated gradient: -0.0, -0.4245311748880909
+Iteration: 21
+Calculated output: 0.8834018788028022
+Sum of squared errors: 0.01359512186671643
+Calculated gradient: -0.23319624239439563, -0.23319624239439563
+Iteration: 22
+Calculated output: 0.798524115407165
+Sum of squared errors: 0.04059253207246539
+Calculated gradient: -0.0, -0.4029517691856701
+Iteration: 23
+Calculated output: 0.8920622736584874
+Sum of squared errors: 0.011650552767775253
+Calculated gradient: -0.2158754526830251, -0.2158754526830251
+Iteration: 24
+Calculated output: 0.8082963692831314
+Sum of squared errors: 0.036750282030029516
+Calculated gradient: -0.0, -0.38340726143373716
+Iteration: 25
+Calculated output: 0.8996640452232113
+Sum of squared errors: 0.010067303820969787
+Calculated gradient: -0.2006719095535774, -0.2006719095535774
+Iteration: 26
+Calculated output: 0.8171843004954622
+Sum of squared errors: 0.03342157998533346
+Calculated gradient: -0.0, -0.3656313990090756
+Iteration: 27
+Calculated output: 0.9063783216332086
+Sum of squared errors: 0.008765018660214929
+Calculated gradient: -0.18724335673358272, -0.18724335673358272
+Iteration: 28
+Calculated output: 0.8252995456455754
+Sum of squared errors: 0.030520248751642394
+Calculated gradient: -0.0, -0.3494009087088492
+Iteration: 29
+Calculated output: 0.9123429237781909
+Sum of squared errors: 0.0076837630117560455
+Calculated gradient: -0.17531415244361814, -0.17531415244361814
+Iteration: 30
+Calculated output: 0.8327362551232417
+Sum of squared errors: 0.027977160350197296
+Calculated gradient: -0.0, -0.33452748975351665
+Iteration: 31
+Calculated output: 0.9176697645352984
+Sum of squared errors: 0.0067782676716732155
+Calculated gradient: -0.16466047092940328, -0.16466047092940328
+Iteration: 32
+Calculated output: 0.8395742757177351
+Sum of squared errors: 0.025736413011489268
+Calculated gradient: -0.0, -0.32085144856452974
+Iteration: 33
+Calculated output: 0.9224504382085755
+Sum of squared errors: 0.006013934534041962
+Calculated gradient: -0.15509912358284894, -0.15509912358284894
+Iteration: 34
+Calculated output: 0.8458816897762282
+Sum of squared errors: 0.02375245354623075
+Calculated gradient: -0.0, -0.3082366204475435
+Iteration: 35
+Calculated output: 0.926760474057651
+Sum of squared errors: 0.005364028160260005
+Calculated gradient: -0.1464790518846979, -0.1464790518846979
+Iteration: 36
+Calculated output: 0.8517168500667754
+Sum of squared errors: 0.021987892554119155
+Calculated gradient: -0.0, -0.2965662998664491
+Iteration: 37
+Calculated output: 0.9306625983681328
+Sum of squared errors: 0.0048076752650588585
+Calculated gradient: -0.13867480326373438, -0.13867480326373438
+Iteration: 38
+Calculated output: 0.8571300186061899
+Sum of squared errors: 0.020411831583467654
+Calculated gradient: -0.0, -0.28573996278762026
+Iteration: 39
+Calculated output: 0.9342092558674042
+Sum of squared errors: 0.004328422013520686
+Calculated gradient: -0.13158148826519156, -0.13158148826519156
+Iteration: 40
+Calculated output: 0.8621646934218755
+Sum of squared errors: 0.018998571739485565
+Calculated gradient: -0.0, -0.27567061315624897
+Iteration: 41
+Calculated output: 0.9374445738682048
+Sum of squared errors: 0.0039131813385304874
+Calculated gradient: -0.12511085226359042, -0.12511085226359042
+Iteration: 42
+Calculated output: 0.8668586883794317
+Sum of squared errors: 0.017726608860045276
+Calculated gradient: -0.0, -0.2662826232411366
+Iteration: 43
+Calculated output: 0.9404059039855583
+Sum of squared errors: 0.003551456279778491
+Calculated gradient: -0.11918819202888331, -0.11918819202888331
+Iteration: 44
+Calculated output: 0.8712450166967421
+Sum of squared errors: 0.01657784572542221
+Calculated gradient: -0.0, -0.2575099666065157
+Iteration: 45
+Calculated output: 0.9431250412290303
+Sum of squared errors: 0.003234760935199504
+Calculated gradient: -0.11374991754193942, -0.11374991754193942
+Iteration: 46
+Calculated output: 0.8753526176133763
+Sum of squared errors: 0.015536969935837176
+Calculated gradient: -0.0, -0.2492947647732473
+Iteration: 47
+Calculated output: 0.9456291948515927
+Sum of squared errors: 0.002956184452486075
+Calculated gradient: -0.10874161029681462, -0.10874161029681462
+Iteration: 48
+Calculated output: 0.8792069571114943
+Sum of squared errors: 0.01459095921026437
+Calculated gradient: -0.0, -0.24158608577701135
+Iteration: 49
+Calculated output: 0.947941766789128
+Sum of squared errors: 0.002710059645037536
+Calculated gradient: -0.10411646642174399, -0.10411646642174399
+Iteration: 50
+Calculated output: 0.8828305269814958
+Sum of squared errors: 0.013728685407433988
+Calculated gradient: -0.0, -0.23433894603700844
+]]></system-out>
+  </testcase>
+  <testcase name="simplestAlways0GateLearning" classname="mattd.NeuralNetworkBackPropagationTest" time="0.05">
+    <system-out><![CDATA[Iteration: 1
+Calculated output: 0.8109945114678612
+Sum of squared errors: 0.6577120976309948
+Calculated gradient: 1.6219890229357223, 1.6219890229357223
+Iteration: 2
+Calculated output: 0.6068021568003558
+Sum of squared errors: 0.36820885749756355
+Calculated gradient: 0.0, 1.2136043136007115
+Iteration: 3
+Calculated output: 0.7331623994310841
+Sum of squared errors: 0.5375271039395445
+Calculated gradient: 1.4663247988621682, 1.4663247988621682
+Iteration: 4
+Calculated output: 0.5413793874311301
+Sum of squared errors: 0.29309164113530567
+Calculated gradient: 0.0, 1.0827587748622602
+Iteration: 5
+Calculated output: 0.6477551315527016
+Sum of squared errors: 0.4195867104528577
+Calculated gradient: 1.2955102631054032, 1.2955102631054032
+Iteration: 6
+Calculated output: 0.4820252702559002
+Sum of squared errors: 0.23234836116527363
+Calculated gradient: 0.0, 0.9640505405118004
+Iteration: 7
+Calculated output: 0.5630818328866435
+Sum of squared errors: 0.3170611505269819
+Calculated gradient: 1.126163665773287, 1.126163665773287
+Iteration: 8
+Calculated output: 0.4302205586108958
+Sum of squared errors: 0.18508972905147122
+Calculated gradient: 0.0, 0.8604411172217916
+Iteration: 9
+Calculated output: 0.4856045313432252
+Sum of squared errors: 0.23581176086107336
+Calculated gradient: 0.9712090626864504, 0.9712090626864504
+Iteration: 10
+Calculated output: 0.38600976552654725
+Sum of squared errors: 0.14900353908185998
+Calculated gradient: 0.0, 0.7720195310530945
+Iteration: 11
+Calculated output: 0.4184738450198452
+Sum of squared errors: 0.17512035896569342
+Calculated gradient: 0.8369476900396904, 0.8369476900396904
+Iteration: 12
+Calculated output: 0.3486421656781319
+Sum of squared errors: 0.12155135968873797
+Calculated gradient: 0.0, 0.6972843313562638
+Iteration: 13
+Calculated output: 0.36212346477971913
+Sum of squared errors: 0.13113340374406848
+Calculated gradient: 0.7242469295594383, 0.7242469295594383
+Iteration: 14
+Calculated output: 0.3170924320141338
+Sum of squared errors: 0.10054761044063806
+Calculated gradient: 0.0, 0.6341848640282676
+Iteration: 15
+Calculated output: 0.31552214944170964
+Sum of squared errors: 0.09955422678831655
+Calculated gradient: 0.6310442988834193, 0.6310442988834193
+Iteration: 16
+Calculated output: 0.29034910979943646
+Sum of squared errors: 0.08430260556132521
+Calculated gradient: 0.0, 0.5806982195988729
+Iteration: 17
+Calculated output: 0.2771373332727845
+Sum of squared errors: 0.07680510149355042
+Calculated gradient: 0.554274666545569, 0.554274666545569
+Iteration: 18
+Calculated output: 0.2675308361359219
+Sum of squared errors: 0.07157274828358548
+Calculated gradient: 0.0, 0.5350616722718438
+Iteration: 19
+Calculated output: 0.24544279570253918
+Sum of squared errors: 0.06024216596227839
+Calculated gradient: 0.49088559140507837, 0.49088559140507837
+Iteration: 20
+Calculated output: 0.24791169414537012
+Sum of squared errors: 0.061460208094027545
+Calculated gradient: 0.0, 0.49582338829074024
+Iteration: 21
+Calculated output: 0.2191157775785932
+Sum of squared errors: 0.04801172398387153
+Calculated gradient: 0.4382315551571864, 0.4382315551571864
+Iteration: 22
+Calculated output: 0.23090881812210387
+Sum of squared errors: 0.05331888228654685
+Calculated gradient: 0.0, 0.46181763624420774
+Iteration: 23
+Calculated output: 0.19707851714268745
+Sum of squared errors: 0.038839941919160556
+Calculated gradient: 0.3941570342853749, 0.3941570342853749
+Iteration: 24
+Calculated output: 0.21605868634563977
+Sum of squared errors: 0.04668135594540354
+Calculated gradient: 0.0, 0.43211737269127953
+Iteration: 25
+Calculated output: 0.17847734210745145
+Sum of squared errors: 0.03185416164574026
+Calculated gradient: 0.3569546842149029, 0.3569546842149029
+Iteration: 26
+Calculated output: 0.20299310752656488
+Sum of squared errors: 0.041206201703291534
+Calculated gradient: 0.0, 0.40598621505312976
+Iteration: 27
+Calculated output: 0.16264374491810474
+Sum of squared errors: 0.026452987760985522
+Calculated gradient: 0.3252874898362095, 0.3252874898362095
+Iteration: 28
+Calculated output: 0.19141860454601448
+Sum of squared errors: 0.03664108216634347
+Calculated gradient: 0.0, 0.38283720909202895
+Iteration: 29
+Calculated output: 0.14905544317518762
+Sum of squared errors: 0.022217525140151587
+Calculated gradient: 0.29811088635037525, 0.29811088635037525
+Iteration: 30
+Calculated output: 0.18109987097262853
+Sum of squared errors: 0.0327971632663027
+Calculated gradient: 0.0, 0.36219974194525706
+Iteration: 31
+Calculated output: 0.13730330529611764
+Sum of squared errors: 0.018852197645238888
+Calculated gradient: 0.2746066105922353, 0.2746066105922353
+Iteration: 32
+Calculated output: 0.17184689428764896
+Sum of squared errors: 0.029531355076310398
+Calculated gradient: 0.0, 0.3436937885752979
+Iteration: 33
+Calculated output: 0.12706509327466703
+Sum of squared errors: 0.016145537928899834
+Calculated gradient: 0.25413018654933406, 0.25413018654933406
+Iteration: 34
+Calculated output: 0.16350506264574918
+Sum of squared errors: 0.026733905510790364
+Calculated gradient: 0.0, 0.32701012529149837
+Iteration: 35
+Calculated output: 0.11808525366856554
+Sum of squared errors: 0.013944127133969472
+Calculated gradient: 0.23617050733713107, 0.23617050733713107
+Iteration: 36
+Calculated output: 0.15594759304302275
+Sum of squared errors: 0.02431965177591224
+Calculated gradient: 0.0, 0.3118951860860455
+Iteration: 37
+Calculated output: 0.11015957430397894
+Sum of squared errors: 0.012135131810833855
+Calculated gradient: 0.22031914860795787, 0.22031914860795787
+Iteration: 38
+Calculated output: 0.14906972903057977
+Sum of squared errors: 0.022221784113250476
+Calculated gradient: 0.0, 0.29813945806115955
+Iteration: 39
+Calculated output: 0.10312358667969139
+Sum of squared errors: 0.010634474129683824
+Calculated gradient: 0.20624717335938278, 0.20624717335938278
+Iteration: 40
+Calculated output: 0.1427842761252025
+Sum of squared errors: 0.020387349508598072
+Calculated gradient: 0.0, 0.285568552250405
+Iteration: 41
+Calculated output: 0.09684379309891389
+Sum of squared errors: 0.009378720261785241
+Calculated gradient: 0.19368758619782778, 0.19368758619782778
+Iteration: 42
+Calculated output: 0.13701814679228075
+Sum of squared errors: 0.018773972550390997
+Calculated gradient: 0.0, 0.2740362935845615
+Iteration: 43
+Calculated output: 0.09121100568187064
+Sum of squared errors: 0.00831944755749824
+Calculated gradient: 0.18242201136374128, 0.18242201136374128
+Iteration: 44
+Calculated output: 0.1317096690168951
+Sum of squared errors: 0.017347436912540058
+Calculated gradient: 0.0, 0.2634193380337902
+Iteration: 45
+Calculated output: 0.08613526114234911
+Sum of squared errors: 0.007419283212060677
+Calculated gradient: 0.17227052228469822, 0.17227052228469822
+Iteration: 46
+Calculated output: 0.1268064749557398
+Sum of squared errors: 0.016079882090700662
+Calculated gradient: 0.0, 0.2536129499114796
+Iteration: 47
+Calculated output: 0.08154191348340356
+Sum of squared errors: 0.006649083654534872
+Calculated gradient: 0.16308382696680712, 0.16308382696680712
+Iteration: 48
+Calculated output: 0.12226383277145948
+Sum of squared errors: 0.01494844480396741
+Calculated gradient: 0.0, 0.24452766554291896
+Iteration: 49
+Calculated output: 0.07736861086176468
+Sum of squared errors: 0.005985901946679171
+Calculated gradient: 0.15473722172352936, 0.15473722172352936
+Iteration: 50
+Calculated output: 0.11804331922709725
+Sum of squared errors: 0.013934225214150388
+Calculated gradient: 0.0, 0.2360866384541945
+]]></system-out>
+  </testcase>
+  <testcase name="simplestNotGateLearning" classname="mattd.NeuralNetworkBackPropagationTest" time="0.074">
+    <system-out><![CDATA[Iteration: 1
+Calculated output: 0.7172509006825788
+Sum of squared errors: 0.5144488545299705
+Calculated gradient: 1.4345018013651576, 1.4345018013651576
+Iteration: 2
+Calculated output: 0.6072065439788454
+Sum of squared errors: 0.15428669909304268
+Calculated gradient: -0.0, -0.7855869120423091
+Iteration: 3
+Calculated output: 0.6731626013833005
+Sum of squared errors: 0.45314788790113236
+Calculated gradient: 1.346325202766601, 1.346325202766601
+Iteration: 4
+Calculated output: 0.5937552188370215
+Sum of squared errors: 0.16503482222215626
+Calculated gradient: -0.0, -0.8124895623259569
+Iteration: 5
+Calculated output: 0.6305339226969453
+Sum of squared errors: 0.3975730276715974
+Calculated gradient: 1.2610678453938906, 1.2610678453938906
+Iteration: 6
+Calculated output: 0.5828911952493211
+Sum of squared errors: 0.17397975500053997
+Calculated gradient: -0.0, -0.8342176095013578
+Iteration: 7
+Calculated output: 0.5904234619246203
+Sum of squared errors: 0.3485998643910535
+Calculated gradient: 1.1808469238492405, 1.1808469238492405
+Iteration: 8
+Calculated output: 0.5744401939660403
+Sum of squared errors: 0.1811011485116614
+Calculated gradient: -0.0, -0.8511196120679194
+Iteration: 9
+Calculated output: 0.5534595788187561
+Sum of squared errors: 0.30631750538623487
+Calculated gradient: 1.1069191576375121, 1.1069191576375121
+Iteration: 10
+Calculated output: 0.5681753648773606
+Sum of squared errors: 0.18647251549880062
+Calculated gradient: -0.0, -0.8636492702452787
+Iteration: 11
+Calculated output: 0.5198994562663317
+Sum of squared errors: 0.2702954446260274
+Calculated gradient: 1.0397989125326634, 1.0397989125326634
+Iteration: 12
+Calculated output: 0.5638484116825524
+Sum of squared errors: 0.1902282079918323
+Calculated gradient: -0.0, -0.8723031766348952
+Iteration: 13
+Calculated output: 0.48972905169769676
+Sum of squared errors: 0.23983454407672536
+Calculated gradient: 0.9794581033953935, 0.9794581033953935
+Iteration: 14
+Calculated output: 0.5612114426058291
+Sum of squared errors: 0.1925353981000576
+Calculated gradient: -0.0, -0.8775771147883418
+Iteration: 15
+Calculated output: 0.4627632017177877
+Sum of squared errors: 0.21414978086409783
+Calculated gradient: 0.9255264034355754, 0.9255264034355754
+Iteration: 16
+Calculated output: 0.5600303318258989
+Sum of squared errors: 0.19357330891322863
+Calculated gradient: -0.0, -0.8799393363482022
+Iteration: 17
+Calculated output: 0.4387258270809025
+Sum of squared errors: 0.192480351347822
+Calculated gradient: 0.877451654161805, 0.877451654161805
+Iteration: 18
+Calculated output: 0.560091626493603
+Sum of squared errors: 0.1935193770810437
+Calculated gradient: -0.0, -0.879816747012794
+Iteration: 19
+Calculated output: 0.41730573879663835
+Sum of squared errors: 0.17414407963260814
+Calculated gradient: 0.8346114775932767, 0.8346114775932767
+Iteration: 20
+Calculated output: 0.561205130215298
+Sum of squared errors: 0.19254093774937353
+Calculated gradient: -0.0, -0.8775897395694039
+Iteration: 21
+Calculated output: 0.39819136477974637
+Sum of squared errors: 0.15855636298515705
+Calculated gradient: 0.7963827295594927, 0.7963827295594927
+Iteration: 22
+Calculated output: 0.5632038803476873
+Sum of squared errors: 0.19079085014331745
+Calculated gradient: -0.0, -0.8735922393046254
+Iteration: 23
+Calculated output: 0.3810900399330975
+Sum of squared errors: 0.14522961853620983
+Calculated gradient: 0.762180079866195, 0.762180079866195
+Iteration: 24
+Calculated output: 0.5659427212440632
+Sum of squared errors: 0.18840572124100902
+Calculated gradient: -0.0, -0.8681145575118736
+Iteration: 25
+Calculated output: 0.36573711819744237
+Sum of squared errors: 0.13376363962736992
+Calculated gradient: 0.7314742363948847, 0.7314742363948847
+Iteration: 26
+Calculated output: 0.5692962381731517
+Sum of squared errors: 0.1855057304517985
+Calculated gradient: -0.0, -0.8614075236536967
+Iteration: 27
+Calculated output: 0.35189889996091533
+Sum of squared errors: 0.1238328357937023
+Calculated gradient: 0.7037977999218307, 0.7037977999218307
+Iteration: 28
+Calculated output: 0.5731565015744291
+Sum of squared errors: 0.18219537214818035
+Calculated gradient: -0.0, -0.8536869968511418
+Iteration: 29
+Calculated output: 0.33937209016397957
+Sum of squared errors: 0.11517341558226828
+Calculated gradient: 0.6787441803279591, 0.6787441803279591
+Iteration: 30
+Calculated output: 0.5774308653695792
+Sum of squared errors: 0.17856467354230268
+Calculated gradient: -0.0, -0.8451382692608416
+Iteration: 31
+Calculated output: 0.3279815025732801
+Sum of squared errors: 0.10757186603022656
+Calculated gradient: 0.6559630051465603, 0.6559630051465603
+Iteration: 32
+Calculated output: 0.5820399373816978
+Sum of squared errors: 0.1746906139438951
+Calculated gradient: -0.0, -0.8359201252366044
+Iteration: 33
+Calculated output: 0.31757703233156387
+Sum of squared errors: 0.10085517146452316
+Calculated gradient: 0.6351540646631277, 0.6351540646631277
+Iteration: 34
+Calculated output: 0.586915767594992
+Sum of squared errors: 0.17063858306163468
+Calculated gradient: -0.0, -0.826168464810016
+Iteration: 35
+Calculated output: 0.30803047157100033
+Sum of squared errors: 0.09488277141625284
+Calculated gradient: 0.6160609431420007, 0.6160609431420007
+Iteration: 36
+Calculated output: 0.5920002608751337
+Sum of squared errors: 0.16646378712595897
+Calculated gradient: -0.0, -0.8159994782497326
+Iteration: 37
+Calculated output: 0.299232468576065
+Sum of squared errors: 0.08954007025012573
+Calculated gradient: 0.59846493715213, 0.59846493715213
+Iteration: 38
+Calculated output: 0.5972438013280879
+Sum of squared errors: 0.16221255556864878
+Calculated gradient: -0.0, -0.8055123973438243
+Iteration: 39
+Calculated output: 0.2910897697235526
+Sum of squared errors: 0.08473325403771088
+Calculated gradient: 0.5821795394471052, 0.5821795394471052
+Iteration: 40
+Calculated output: 0.6026040671748564
+Sum of squared errors: 0.15792352742596608
+Calculated gradient: -0.0, -0.7947918656502873
+Iteration: 41
+Calculated output: 0.28352279259275676
+Sum of squared errors: 0.08038517391959536
+Calculated gradient: 0.5670455851855135, 0.5670455851855135
+Iteration: 42
+Calculated output: 0.608045012724352
+Sum of squared errors: 0.1536287120502534
+Calculated gradient: -0.0, -0.7839099745512961
+Iteration: 43
+Calculated output: 0.27646353015455555
+Sum of squared errors: 0.07643208350551885
+Calculated gradient: 0.5529270603091111, 0.5529270603091111
+Iteration: 44
+Calculated output: 0.6135359947537979
+Sum of squared errors: 0.1493544273509365
+Calculated gradient: -0.0, -0.7729280104924041
+Iteration: 45
+Calculated output: 0.2698537621594039
+Sum of squared errors: 0.07282105295158411
+Calculated gradient: 0.5397075243188078, 0.5397075243188078
+Iteration: 46
+Calculated output: 0.6190510226842092
+Sum of squared errors: 0.1451221233179469
+Calculated gradient: -0.0, -0.7618979546315816
+Iteration: 47
+Calculated output: 0.26364353999753465
+Sum of squared errors: 0.06950791618243166
+Calculated gradient: 0.5272870799950693, 0.5272870799950693
+Iteration: 48
+Calculated output: 0.6245681144694407
+Sum of squared errors: 0.14094910067303096
+Calculated gradient: -0.0, -0.7508637710611186
+Iteration: 49
+Calculated output: 0.25778990901172155
+Sum of squared errors: 0.06645563718827167
+Calculated gradient: 0.5155798180234431, 0.5155798180234431
+Iteration: 50
+Calculated output: 0.6300687426459919
+Sum of squared errors: 0.13684913516751737
+Calculated gradient: -0.0, -0.7398625147080162
+]]></system-out>
+  </testcase>
+</testsuite>

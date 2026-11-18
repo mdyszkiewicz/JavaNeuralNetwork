@@ -24,3 +24,4 @@ hs_err_pid*
 replay_pid*
 .idea/
 Jave Neural Network/.idea/
+/j-neural-net-java/target/
